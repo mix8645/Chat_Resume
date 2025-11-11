@@ -7,10 +7,12 @@ parser = StrOutputParser()
 
 prompt = ChatPromptTemplate.from_messages([
     ("system", SYSTEM_MESSAGE),  
-    ("human", "{question}")      
+    ("human", "{query}")      
 ])
 
 chain = prompt | llm | parser
 
-response = chain.invoke({"question":"How many experince he got?"})
+query = input("Ask my agent: ")
+
+response = chain.invoke({"query": query})
 print(response)
