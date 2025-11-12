@@ -1,3 +1,7 @@
 python-dotenv
 langchain
 langchain-anthropic
+langchain-community
+voyageai
+pymongo[srv]
+langchain-mongodb pymongo
