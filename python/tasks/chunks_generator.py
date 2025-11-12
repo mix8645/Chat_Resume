@@ -1,7 +1,7 @@
 from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-loader = TextLoader("python/doc/resume.txt", encoding="utf-8")
+loader = TextLoader("doc/resume.txt", encoding="utf-8")
 
 documents = loader.load() 
 

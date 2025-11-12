@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+ 
+  app:
+    build: 
+      dockerfile: Dockerfile 
+      context: python
+    container_name: my_langchain_app
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - VOYAGE_API_KEY=${VOYAGE_API_KEY}
+      - MONGODB_ATLAS_CLUSTER_URI=${MONGODB_ATLAS_CLUSTER_URI}
+    restart: unless-stopped
+
+    stdin_open: true
+    tty: true

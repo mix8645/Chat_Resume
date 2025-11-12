@@ -20,7 +20,12 @@ rag_chain = (
     | parser
 )
 
-query = input("Ask my agent: ")
+while True:
+    query = input("Ask my agent: ")
+    
+    if query.lower() == 'exit':
+        print("Exiting...")
+        break
 
 response = rag_chain.invoke(query)
 print(retriever)
