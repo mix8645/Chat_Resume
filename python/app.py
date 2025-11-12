@@ -9,8 +9,7 @@ from langchain_core.runnables import RunnablePassthrough
 parser = StrOutputParser()
 
 prompt = ChatPromptTemplate.from_messages([
-    ("system", SYSTEM_MESSAGE),
-    ("context", "{context}"),
+    ("system", SYSTEM_MESSAGE + "\n\nContext:\n{context}"),
     ("human", "{query}"),
 ])
 
@@ -24,4 +23,5 @@ rag_chain = (
 query = input("Ask my agent: ")
 
 response = rag_chain.invoke(query)
+print(retriever)
 print(response)
