@@ -85,8 +85,6 @@ services:
       - MONGODB_ATLAS_CLUSTER_URI=${MONGODB_ATLAS_CLUSTER_URI}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - API_TOKEN=${API_TOKEN}
-    env_file:
-      - .env
     restart: unless-stopped
 ```
 ## 🚦 Running the Application
