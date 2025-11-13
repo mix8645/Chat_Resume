@@ -85,8 +85,6 @@ services:
       - MONGODB_ATLAS_CLUSTER_URI=${MONGODB_ATLAS_CLUSTER_URI}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - API_TOKEN=${API_TOKEN}
-    env_file:
-      - .env
     restart: unless-stopped
 ```
 ## 🚦 Running the Application
@@ -222,22 +220,35 @@ Navigate to: `http://localhost:8000/docs`
 
 ## 📁 Project Structure
 ```
-Chat_Resume/
-├── app.py                      # Main FastAPI application
-├── agent/
-│   ├── llm.py                  # LLM configuration (Anthropic)
-│   └── prompt.py               # System prompts
-├── tasks/
-│   ├── chunks_generator.py     # Document chunking logic
-│   └── vector_storage.py       # MongoDB vector store setup
-├── doc/
-│   └── resume.txt              # Resume document
-├── Dockerfile                  # Docker build configuration
-├── docker-compose.yml          # Docker Compose configuration
-├── pyproject.toml              # Poetry dependencies
-├── poetry.lock                 # Locked dependencies
-├── .env                        # Environment variables (not in git)
-└── README.md                   # This file
+CHAT_RESUME/
+├── golang/                         # Go application part (possibly a microservice)
+│   ├── go.mod                      # Go dependencies management file
+│   └── main.go                     # Main file to run the Go app
+├── python/                  
+│   ├── agent/              
+│   │   ├── llm.py                  # LLM configuration (e.g., OpenAI, Anthropic)
+│   │   ├── prompt.py               # Prompt templates file
+│   │   └── rag_chain.py            # Logic for RAG (Retrieval-Augmented Generation)
+│   ├── auth/                
+│   │   └── security.py             # Security functions (e.g., API keys, JWT)
+│   ├── controller/          
+│   │   └── controller.py           # API controller code
+│   ├── doc/                 
+│   │   └── resume.txt              # Resume file used as data
+│   ├── models/              
+│   │   └── schemas.py              # Pydantic schemas for API data validation
+│   └── tasks/
+│   │   ├── chunks_generator.py     # Document chunking logic
+│   │   └── vector_storage.py       # MongoDB vector store setup          
+│   ├── app.py                      # Main file to run the Python app
+│   ├── Dockerfile                  # File to build Docker image
+│   ├── poetry.lock                 # Locked dependencies file (Poetry)
+│   └── pyproject.toml              # Project configuration and dependencies file (Poetry)
+├── .env                            # Environment variables file
+├── .gitattributes                  # Git attributes configuration file
+├── .gitignore                      # File specifying items Git should ignore
+├── docker-compose.yml              # Docker Compose configuration file
+└── README.md                       # Project explanation document
 ```
 
 ## 🔒 Security
