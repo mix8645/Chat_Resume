@@ -7,11 +7,12 @@ services:
       dockerfile: Dockerfile 
       context: python
     container_name: my_langchain_app
+    ports:
+      - "8000:8000"
     environment:
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - VOYAGE_API_KEY=${VOYAGE_API_KEY}
       - MONGODB_ATLAS_CLUSTER_URI=${MONGODB_ATLAS_CLUSTER_URI}
+      - API_TOKEN=${API_TOKEN}
     restart: unless-stopped
 
-    stdin_open: true
-    tty: true

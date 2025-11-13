@@ -14,7 +14,7 @@ client = MongoClient(MONGODB_ATLAS_CLUSTER_URI)
 DB_NAME = "Database_resume"
 COLLECTION_NAME = "resume"
 MONGODB_COLLECTION = client[DB_NAME][COLLECTION_NAME]
-ATLAS_VECTOR_SEARCH_INDEX_NAME = "langchain-test-index-vectorstores"
+ATLAS_VECTOR_SEARCH_INDEX_NAME = "vector_index"
 
 embedding_function = VoyageAIEmbeddings(
     voyage_api_key=VOYAGE_API_KEY,
@@ -40,6 +40,6 @@ else:
 
 # Create retriever
 retriever = vector_store.as_retriever(
-    search_type="similarity",
-    search_kwargs={"k": 4}
+    search_type="similarity_score_threshold",
+    search_kwargs={"k": 4, "score_threshold": 0.1}
 )
